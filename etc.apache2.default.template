@@ -66,12 +66,13 @@
   
   <Directory /var/www/seedboxInfo.php>
     Options FollowSymLinks
-    AllowOverride All
     AuthType Digest
     AuthName "Info for your Seedbox"
+    AuthDigestDomain /var/www/seedboxInfo.php/ https://<servername>/seedboxInfo.php
     AuthDigestProvider file
     AuthUserFile /etc/apache2/htpasswd
-    Require user <username>
+    Require user valid-user
+    SetEnv R_ENV "/var/www/seedboxInfo.php"
   </Directory>
 
   ErrorLog /var/log/apache2/error.log
@@ -141,12 +142,13 @@
   
   <Directory /var/www/seedboxInfo.php>
     Options FollowSymLinks
-    AllowOverride All
     AuthType Digest
     AuthName "Info for your Seedbox"
+    AuthDigestDomain /var/www/seedboxInfo.php/ https://<servername>/seedboxInfo.php
     AuthDigestProvider file
     AuthUserFile /etc/apache2/htpasswd
-    Require user <username>
+    Require user valid-user
+    SetEnv R_ENV "/var/www/seedboxInfo.php"
   </Directory>
 
   ErrorLog /var/log/apache2/error.log
